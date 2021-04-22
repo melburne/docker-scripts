@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Admin12#"
+      ACCEPT_EULA: "Y"
+
+  adminer:
+    image: adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: sql-server-db
+    ports:
+      - 8080:8080
